@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login/Logout - DAW</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="contenedor-padre">
+    <div class="tarjeta">
+      
+      <!-- Cabecera -->
+      <div class="cabecera">
+        <h2>Control Horario Laboral</h2>
+        <p id="labelUsuario">Estado: No identificado</p>
+      </div>
+
+      <!-- FORMULARIO DE LOGIN -->
+      <div id="bloqueLogin" class="seccion">
+        <form id="formLogin">
+          <div class="campo">
+            <label>Usuario:</label><br>
+            <input type="text" id="inputUsuario" required placeholder="Ej: Juan">
+          </div>
+          <div class="campo">
+            <label>Contraseña:</label><br>
+            <input type="password" id="inputPassword" required>
+          </div>
+          <button type="submit" class="btn btn-login">Iniciar Sesión</button>
+        </form>
+      </div>
+
+      <!-- PANEL DE FICHAJE -->
+      <div id="bloqueFichaje" class="seccion" style="display: none;">
+        
+        <!-- Reloj digital -->
+        <div class="reloj" id="reloj">00:00:00</div>
+
+        <div class="texto-estado">
+          <p>Actualmente estás: <span id="textoEstado">FUERA</span></p>
+        </div>
+
+        <!-- Botón de fichar -->
+        <button id="btnFichar" class="btn btn-entrada">FICHAR ENTRADA</button>
+
+        <hr class="separador">
+
+        <!-- Tabla de historial -->
+        <h3>Mis fichajes guardados</h3>
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Entrada</th>
+              <th>Salida</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody id="tablaBody">
+            <!-- Se carga desde la API de Spring Boot -->
+          </tbody>
+        </table>
+
+        <br>
+        <button id="btnCerrarSesion" class="btn-salir">Cerrar Sesión</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

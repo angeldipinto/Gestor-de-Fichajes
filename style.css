@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #dbeafe;
+  color: #1e293b;
+  padding-top: 50px;
+}
+
+.contenedor-padre {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.tarjeta {
+  background-color: #ffffff;
+  width: 420px;
+  padding: 25px;
+  border-radius: 8px;
+  border: 2px solid #93c5fd;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cabecera {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cabecera h2 {
+  color: #1d4ed8;
+  font-size: 22px;
+}
+
+.cabecera p {
+  color: #64748b;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.campo {
+  margin-bottom: 15px;
+}
+
+.campo label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.campo input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+}
+
+.reloj {
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+  background-color: #1e293b;
+  color: #38bdf8;
+  padding: 8px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.texto-estado {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 15px;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-login {
+  background-color: #2563eb;
+}
+
+.btn-login:hover {
+  background-color: #1d4ed8;
+}
+
+.btn-entrada {
+  background-color: #16a34a;
+}
+
+.btn-entrada:hover {
+  background-color: #15803d;
+}
+
+.btn-salida {
+  background-color: #dc2626;
+}
+
+.btn-salida:hover {
+  background-color: #b91c1c;
+}
+
+.btn-salir {
+  background: none;
+  border: none;
+  color: #64748b;
+  text-decoration: underline;
+  cursor: pointer;
+  width: 100%;
+  font-size: 13px;
+}
+
+.separador {
+  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid #e2e8f0;
+}
+
+h3 {
+  font-size: 15px;
+  color: #1d4ed8;
+  margin-bottom: 10px;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.tabla th, .tabla td {
+  border: 1px solid #cbd5e1;
+  padding: 6px;
+  text-align: left;
+}
+
+.tabla th {
+  background-color: #eff6ff;
+  color: #1e40af;
+}
