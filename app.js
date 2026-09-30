@@ -25,6 +25,14 @@ window.onload = function() {
     }
   };
 
+  // Evento Formulario Fichaje Manual
+  document.getElementById("formManual").onsubmit = function(e) {
+    e.preventDefault();
+    var entrada = document.getElementById("inputManualEntrada").value;
+    var salida = document.getElementById("inputManualSalida").value;
+    ficharManual(entrada, salida);
+  };
+
   // Evento Cerrar Sesión
   document.getElementById("btnCerrarSesion").onclick = function() {
     cerrarSesion();
@@ -80,9 +88,9 @@ function comprobarFichajeActivo() {
   });
 }
 
-// 3. FICHAR ENTRADA (POST /fichajes/entrar) -> Ruta actualizada según chat de Camilo
+// 3. FICHAR ENTRADA (POST /fichajes/entrada)
 function ficharEntrada() {
-  fetch(API_URL + "/fichajes/entrar", {
+  fetch(API_URL + "/fichajes/entrada", {
     method: "POST",
     headers: { 
       "Content-Type": "application/json",
@@ -103,9 +111,9 @@ function ficharEntrada() {
   });
 }
 
-// 4. FICHAR SALIDA (PATCH /fichajes/salir) -> Ruta actualizada según chat de Camilo
+// 4. FICHAR SALIDA (PATCH /fichajes/salida)
 function ficharSalida() {
-  fetch(API_URL + "/fichajes/salir", {
+  fetch(API_URL + "/fichajes/salida", {
     method: "PATCH",
     headers: { 
       "Content-Type": "application/json",
@@ -126,7 +134,37 @@ function ficharSalida() {
   });
 }
 
-// 5. OBTENER HISTORIAL (GET /fichajes)
+// FICHAJE MANUAL (POST /fichajes/manual)
+function ficharManual(entrada, salida) {
+  if (!codigoUsuario) return;
+
+  if (entrada >= salida) {
+    alert("La salida debe ser posterior a la entrada.");
+    return;
+  }
+
+  fetch(API_URL + "/fichajes/manual", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Codigo-X": codigoUsuario
+    },
+    body: JSON.stringify({ fechaHoraEntrada: entrada, fechaHoraSalida: salida })
+  })
+  .then(function(respuesta) {
+    if (!respuesta.ok) { throw new Error("No se pudo guardar (¿tienes un fichaje abierto ahora mismo?)"); }
+    return respuesta.json();
+  })
+  .then(function(fichajeCreado) {
+    document.getElementById("formManual").reset();
+    obtenerHistorialFichajes();
+  })
+  .catch(function(error) {
+    alert("Error en el fichaje manual: " + error.message);
+  });
+}
+
+// 6. OBTENER HISTORIAL (GET /fichajes)
 function obtenerHistorialFichajes() {
   if (!codigoUsuario) return;
 
@@ -231,9 +269,17 @@ function actualizarBotonYEstado() {
   }
 }
 
+//se borra todo lo del usuario anterior
 function cerrarSesion() {
   codigoUsuario = null;
+  estaTrabajando = false;
   localStorage.removeItem("codigoUsuario");
+
+  document.getElementById("tablaBody").innerHTML = "";
+  document.getElementById("formLogin").reset();
+  document.getElementById("formManual").reset();
+  actualizarBotonYEstado();
+
   comprobarEstadoSesion();
 }
 

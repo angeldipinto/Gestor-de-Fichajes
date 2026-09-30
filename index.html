@@ -46,6 +46,22 @@
 
         <hr class="separador">
 
+        <!-- Fichaje manual -->
+        <h3>Añadir fichaje manual</h3>
+        <form id="formManual">
+          <div class="campo">
+            <label>Entrada:</label><br>
+            <input type="datetime-local" id="inputManualEntrada" required>
+          </div>
+          <div class="campo">
+            <label>Salida:</label><br>
+            <input type="datetime-local" id="inputManualSalida" required>
+          </div>
+          <button type="submit" class="btn btn-manual">GUARDAR FICHAJE MANUAL</button>
+        </form>
+
+        <hr class="separador">
+
         <!-- Tabla de historial -->
         <h3>Mis fichajes guardados</h3>
         <table class="tabla">

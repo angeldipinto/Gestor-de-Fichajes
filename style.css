@@ -111,6 +111,14 @@ body {
   background-color: #b91c1c;
 }
 
+.btn-manual {
+  background-color: #0284c7;
+}
+
+.btn-manual:hover {
+  background-color: #0369a1;
+}
+
 .btn-salir {
   background: none;
   border: none;
